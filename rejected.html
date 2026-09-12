@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rejected Fits — JAPORMS</title>
-  <meta name="description" content="Pieces you passed on. Retrieve up to 3 for free — Pro unlocks unlimited retrieves.">
+  <meta name="description" content="Pieces you swiped left on — retrieve them back into your deck if you change your mind.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -53,16 +53,18 @@
 
   <section class="page-hero">
     <div class="container">
-      <span class="badge">Second Chances</span>
-      <h1 class="hero-title" style="font-size:3rem;">Rejected <span class="gradient-text">Fits</span></h1>
-      <p class="hero-desc" style="margin-bottom:0;">Pieces you swiped left on. Retrieve them back to your deck — 3 free retrieves, unlimited on Pro.</p>
-      <p class="retrieve-count" id="retrieveCount" style="margin-top:1.2rem;"></p>
+      <span class="badge">Your Closet</span>
+      <h1 class="hero-title" style="font-size: 2.6rem;">Rejected Fits</h1>
+      <p class="hero-desc" style="max-width: 560px;">Changed your mind? Retrieve pieces back into your swipe deck — free plan includes 3 retrieves, Pro is unlimited.</p>
     </div>
   </section>
 
   <section class="container">
+    <p class="retrieve-count" id="retrieveCount"></p>
     <div class="items-grid" id="itemsGrid"></div>
   </section>
+
+  <div class="toast" id="toast"></div>
 
   <footer>
     <div class="container">
