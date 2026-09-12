@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JAPORMS — Swipe. Match. Wear.</title>
+  <meta name="description" content="JAPORMS learns your measurements and fit categories — swipe right on fits you love, left on the rest.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="glow-sphere glow-1"></div>
+  <div class="glow-sphere glow-2"></div>
+  <div class="glow-sphere glow-3"></div>
+  <header>
+    <a href="index.html" class="logo">
+      <div class="logo-icon"></div>
+      <span>JAPORMS</span>
+    </a>
+    <nav>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#dashboard">Swipe Deck</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="liked.html">Liked</a>
+      <a href="rejected.html">Rejected</a>
+    </nav>
+    <div class="header-actions" id="authSlot">
+      <a href="signup.html" class="btn-signin" style="text-decoration:none;">Sign In</a>
+      <a href="signup.html" class="btn btn-primary" style="padding: 0.6rem 1.4rem; font-size: 0.85rem;">Get Started</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#features" class="mobile-link">Features</a>
+    <a href="index.html#dashboard" class="mobile-link">Swipe Deck</a>
+    <a href="index.html#pricing" class="mobile-link">Pricing</a>
+    <a href="index.html#faq" class="mobile-link">FAQ</a>
+    <a href="liked.html" class="mobile-link">Liked</a>
+    <a href="rejected.html" class="mobile-link">Rejected</a>
+    <div style="display: flex; flex-direction: column; gap: 1rem; width: 80%; margin-top: 1rem;">
+      <a href="signup.html" class="btn btn-secondary" style="width: 100%;">Sign In</a>
+      <a href="signup.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
+    </div>
+  </div>
+
+  <!-- HERO SECTION WITH SWIPE DECK -->
+  <section class="hero-section" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="badge">AI-Powered Fit Matching</span>
+        <h1 class="hero-title">Swipe. Match. Wear.<br><span class="gradient-text">Your Perfect Fit.</span></h1>
+        <p class="hero-desc">JAPORMS learns your height, width, and your own baggy / fitted size categories — then serves you a deck of pieces worth your swipe. Right means love, left means next.</p>
+        <div class="hero-buttons">
+          <a href="#dashboard" class="btn btn-primary">
+            <span>Start Swiping</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="signup.html" class="btn btn-secondary">Set My Categories</a>
+        </div>
+      </div>
+
+      <!-- SWIPE DECK (replaces the dashboard preview wrapper, same class kept) -->
+      <div class="dashboard-preview-wrapper" id="dashboard">
+        <div class="swipe-stack" id="swipeStack"></div>
+        <div class="swipe-actions">
+          <button class="swipe-action-btn nope" id="btnNope" aria-label="Reject">
+            <svg viewBox="0 0 24 24" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+          <button class="swipe-action-btn like" id="btnLike" aria-label="Like">
+            <svg viewBox="0 0 24 24" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </button>
+        </div>
+        <p class="swipe-hint">Drag the card — swipe right to like, left to pass</p>
+        <div class="swipe-counters" id="swipeCounters">
+          <a class="counter-chip" href="liked.html">♥ Liked: <b id="likedCount">0</b></a>
+          <a class="counter-chip" href="rejected.html">✕ Rejected: <b id="rejectedCount">0</b></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">The Platform</span>
+        <h2 class="section-title">Built Around Your Fit, Not Ours</h2>
+        <p>Generic size charts guess. JAPORMS asks — then matches every piece against the categories you personally defined.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <h3>Tinder-Fast Swipe Deck</h3>
+          <p>Fly through curated drops with buttery drag physics. Right swipe saves a fit to your closet, left swipe archives it.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <h3>Your Fit Categories</h3>
+          <p>Define what "baggy" and "fitted" mean to you — down to the exact sizes in each category. The deck adapts to your rules.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          </div>
+          <h3>AI Fit Assistant</h3>
+          <p>Ask if any piece is available in your categories before you swipe — the assistant checks fit, sizes, stock, and your measurements.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <h3>One-Tap Purchases</h3>
+          <p>Everything you liked lives in one closet page. Review, remove, or purchase — checkout takes a single confirm.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <h3>Second-Chance Retrieve</h3>
+          <p>Changed your mind? Pull pieces back from your rejected pile — free for your first 3, unlimited on Pro.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+          </div>
+          <h3>Fresh Drops Weekly</h3>
+          <p>New pieces land on the deck every week, matched against your categories the moment they arrive.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Pricing Plans</span>
+        <h2 class="section-title">Simple Plans, Honest Fits</h2>
+        <p>Start free. Upgrade when your closet outgrows the limits.</p>
+      </div>
+      <div class="toggle-wrapper">
+        <span class="toggle-label active" id="billingMonthly">Billed Monthly</span>
+        <label>
+          <input type="checkbox" id="billingToggle">
+          <div class="toggle-switch">
+            <div class="toggle-switch-slider"></div>
+          </div>
+        </label>
+        <span class="toggle-label" id="billingAnnually">Billed Annually <span class="discount-badge">Save 20%</span></span>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-card-top">
+            <h3>Starter</h3>
+            <p class="plan-desc">For casual swipers building their first fit profile.</p>
+            <div class="price-value-container">
+              <span class="price-currency">$</span>
+              <span class="price-value" id="priceStarter">19</span>
+              <span class="price-period">/ mo</span>
+            </div>
+            <ul class="plan-features-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Full swipe deck access</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Custom baggy / fitted categories</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>3 free rejected-fit retrieves</span></li>
+              <li style="opacity: 0.5;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Unlimited retrieves</span></li>
+            </ul>
+          </div>
+          <a href="signup.html" class="btn btn-secondary">Choose Starter</a>
+        </div>
+        <div class="pricing-card popular">
+          <div class="popular-tag">MOST POPULAR</div>
+          <div class="pricing-card-top">
+            <h3>Pro Closet</h3>
+            <p class="plan-desc">For serious stylers who never want to lose a fit.</p>
+            <div class="price-value-container">
+              <span class="price-currency">$</span>
+              <span class="price-value" id="pricePro">49</span>
+              <span class="price-period">/ mo</span>
+            </div>
+            <ul class="plan-features-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Everything in Starter</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Unlimited rejected-fit retrieves</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Early access to weekly drops</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Priority AI assistant</span></li>
+            </ul>
+          </div>
+          <button class="btn btn-primary" id="proPlanBtn">Upgrade to Pro</button>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-card-top">
+            <h3>Boutique</h3>
+            <p class="plan-desc">For brands and stylists curating at scale.</p>
+            <div class="price-value-container">
+              <span class="price-value" style="font-size: 2.5rem; letter-spacing: 0;">Custom</span>
+            </div>
+            <ul class="plan-features-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Unlimited profiles & closets</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Custom drop pipelines</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>API access</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Dedicated style advisor</span></li>
+            </ul>
+          </div>
+          <button class="btn btn-secondary">Contact Sales</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Knowledge Hub</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p>Everything about categories, swiping, retrieving, and how the AI checks availability.</p>
+      </div>
+      <div class="faq-accordion-container">
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>What are fit categories?</span>
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">At signup you tell us which sizes count as "baggy" for you and which count as "fitted" — for example, baggy might be L–XXL while fitted is S–M. These personal categories drive the AI assistant's availability checks.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>How does swiping work?</span>
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Drag the top card left or right. Right swipes land on your Liked page where you can purchase them; left swipes go to your Rejected page. You can also use the heart and X buttons below the deck.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>How many rejected fits can I retrieve?</span>
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">The free plan includes 3 retrieves — each one puts a rejected piece back into your swipe deck. Upgrading to Pro removes the limit entirely so you can second-guess yourself as much as you like.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question-btn">
+            <span>What can the AI assistant check?</span>
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Ask it about any piece — e.g. "Is the Kyoto Heavyweight Hoodie available in baggy XL?" It verifies the fit against your categories, checks size overlap and stock, and even compares the garment's chest measurement to your width.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"></div>
+            <span>JAPORMS</span>
+          </a>
+          <p class="footer-desc">The AI-assisted fit matching platform — swipe through curated drops matched to your measurements and your own baggy / fitted size categories.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="Twitter">
+              <svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="GitHub">
+              <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Platform</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#dashboard">Swipe Deck</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="signup.html">Fit Profile</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Closet</h4>
+          <ul class="footer-links">
+            <li><a href="liked.html">Liked Fits</a></li>
+            <li><a href="rejected.html">Rejected Fits</a></li>
+            <li><a href="signup.html">My Categories</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Get New Drop Alerts</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">Be first to know when fresh pieces hit the deck.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed to drop alerts');">
+            <div class="newsletter-input-group">
+              <input type="email" placeholder="Enter your email..." class="newsletter-input" required>
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 JAPORMS. All fits reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Returns</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/swipe.js"></script>
+  <script src="js/ai-assistant.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
