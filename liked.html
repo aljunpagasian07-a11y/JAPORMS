@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Liked Fits — JAPORMS</title>
-  <meta name="description" content="All the fits you swiped right on. Purchase or remove them here.">
+  <meta name="description" content="Everything you swiped right on — review, remove, or purchase your liked fits.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
       <a href="rejected.html">Rejected</a>
     </nav>
     <div class="header-actions" id="authSlot">
-      <a href="signup.html" class="btn-signin" style="text-decoration:none;">Sign In</a>
+      <a href="login.html" class="btn-signin" style="text-decoration:none;">Sign In</a>
       <a href="signup.html" class="btn btn-primary" style="padding: 0.6rem 1.4rem; font-size: 0.85rem;">Get Started</a>
     </div>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
@@ -46,7 +46,7 @@
     <a href="liked.html" class="mobile-link">Liked</a>
     <a href="rejected.html" class="mobile-link">Rejected</a>
     <div style="display: flex; flex-direction: column; gap: 1rem; width: 80%; margin-top: 1rem;">
-      <a href="signup.html" class="btn btn-secondary" style="width: 100%;">Sign In</a>
+      <a href="login.html" class="btn btn-secondary" style="width: 100%;">Sign In</a>
       <a href="signup.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
     </div>
   </div>
@@ -54,14 +54,16 @@
   <section class="page-hero">
     <div class="container">
       <span class="badge">Your Closet</span>
-      <h1 class="hero-title" style="font-size:3rem;">Liked <span class="gradient-text">Fits</span></h1>
-      <p class="hero-desc" style="margin-bottom:0;">Everything you swiped right on. Purchase it, or clear it out.</p>
+      <h1 class="hero-title" style="font-size: 2.6rem;">Liked Fits</h1>
+      <p class="hero-desc" style="max-width: 560px;">Everything you swiped right on lives here. Purchase when you're ready, or remove pieces you've changed your mind about.</p>
     </div>
   </section>
 
   <section class="container">
     <div class="items-grid" id="itemsGrid"></div>
   </section>
+
+  <div class="toast" id="toast"></div>
 
   <footer>
     <div class="container">
