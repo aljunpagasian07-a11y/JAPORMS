@@ -1,3 +1,6 @@
+/* ==========================================
+   JAPORMS — login (Firebase Auth)
+   ========================================== */
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('loginForm');
   const errorBox = document.getElementById('formError');
@@ -15,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => toastEl.classList.remove('show'), 2200);
   }
 
+ 
   function friendlyAuthError(err) {
     switch (err.code) {
       case 'auth/invalid-email': return 'Please enter a valid email address.';
@@ -64,9 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch((err) => showError(friendlyAuthError(err)));
   });
 
+
   auth.onAuthStateChanged((user) => {
     if (user) {
-      window.location.href = 'index.html';
+     
     }
   });
 });
