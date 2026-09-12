@@ -1,4 +1,3 @@
-
 /* ==========================================
    JAPORMS — home page logic
    ========================================== */
@@ -37,7 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
       ' · ' + profile.height + 'cm / ' + profile.width + 'cm</span>' +
       '<button class="btn-signin" id="signOutBtn">Sign Out</button>';
     document.getElementById('signOutBtn').addEventListener('click', () => {
-      if (confirm('Sign out of JAPORMS?')) { Store.clearProfile(); location.reload(); }
+      if (!confirm('Sign out of JAPORMS?')) return;
+      // Sign out of Firebase first (this is the source of truth for auth state),
+      // then clear the local mirror either way so the UI updates even if the
+      // network request fails (e.g. offline) — a stale local session is worse
+      // than a stale Firebase session here.
+      auth.signOut()
+        .catch((err) => console.error('Firebase sign-out failed:', err))
+        .finally(() => {
+          Store.clearProfile();
+          location.reload();
+        });
     });
   }
 
