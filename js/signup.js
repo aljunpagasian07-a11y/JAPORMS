@@ -1,13 +1,19 @@
-
-/* ==========================================
-   JAPORMS — signup / profile setup
-   ========================================== */
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('signupForm');
   const errorBox = document.getElementById('formError');
+  const submitBtn = form.querySelector('button[type="submit"]');
 
   function showError(msg) { errorBox.textContent = msg; errorBox.classList.add('show'); }
   function clearError() { errorBox.classList.remove('show'); }
+
+  function friendlyAuthError(err) {
+    switch (err.code) {
+      case 'auth/email-already-in-use': return 'An account with this email already exists. Try logging in instead.';
+      case 'auth/invalid-email': return 'Please enter a valid email address.';
+      case 'auth/weak-password': return 'Password must be at least 6 characters.';
+      default: return 'Something went wrong creating your account. Please try again.';
+    }
+  }
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -29,8 +35,32 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!width || width < 40 || width > 200) return showError('Width (chest) must be between 40\u2013200 cm.');
     if (!baggy.length && !fitted.length) return showError('Pick at least one size in Baggy or Fitted categories \u2014 that\u2019s how the AI matches you.');
 
-    Store.saveProfile({ name, email, height, width, categories: { baggy, fitted }, createdAt: Date.now() });
-    showToast('Profile created \u2014 welcome to JAPORMS');
-    setTimeout(() => { window.location.href = 'index.html'; }, 700);
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Creating profile...';
+
+ 
+    auth.createUserWithEmailAndPassword(email, password)
+      .then((cred) => {
+      
+        return db.collection('profiles').doc(cred.user.uid).set({
+          name,
+          email,
+          height,
+          width,
+          categories: { baggy, fitted },
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        }).then(() => cred.user.updateProfile({ displayName: name }));
+      })
+      .then(() => {
+      
+        Store.saveProfile({ name, email, height, width, categories: { baggy, fitted }, createdAt: Date.now() });
+        showToast('Profile created \u2014 welcome to JAPORMS');
+        setTimeout(() => { window.location.href = 'index.html'; }, 700);
+      })
+      .catch((err) => {
+        showError(friendlyAuthError(err));
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Create Profile & Start Swiping';
+      });
   });
 });
