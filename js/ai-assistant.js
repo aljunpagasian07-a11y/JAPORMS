@@ -17,7 +17,7 @@ const Assistant = (() => {
     endpoint: 'https://openrouter.ai/api/v1/chat/completions',
     model: 'openai/gpt-4o-mini',       // any OpenRouter model id
     keys: [
-      'sk-or-v1-REPLACE_KEY_1',
+      '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',
       'sk-or-v1-REPLACE_KEY_2',
       'sk-or-v1-REPLACE_KEY_3'
     ],
