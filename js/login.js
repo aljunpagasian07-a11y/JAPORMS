@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => toastEl.classList.remove('show'), 2200);
   }
 
- 
   function friendlyAuthError(err) {
     switch (err.code) {
       case 'auth/invalid-email': return 'Please enter a valid email address.';
@@ -46,6 +45,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     auth.signInWithEmailAndPassword(email, password)
       .then((cred) => {
+        // Bridge for index.html's existing lock-check logic: pull this user's
+        // profile from Firestore and mirror it into localStorage via Store,
+        // in case this browser never had it (e.g. logging in on a new device).
+        return db.collection('profiles').doc(cred.user.uid).get().then((doc) => {
+          if (doc.exists) {
+            const data = doc.data();
+            Store.saveProfile({
+              name: data.name, email: data.email, height: data.height,
+              width: data.width, categories: data.categories, createdAt: Date.now()
+            });
+          }
+        });
+      })
+      .then(() => {
         showToast('Welcome back — logging you in');
         setTimeout(() => { window.location.href = 'index.html'; }, 600);
       })
@@ -68,10 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch((err) => showError(friendlyAuthError(err)));
   });
 
-
   auth.onAuthStateChanged((user) => {
     if (user) {
-     
+   
     }
   });
 });
